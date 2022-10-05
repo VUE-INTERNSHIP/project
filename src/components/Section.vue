@@ -1,7 +1,7 @@
 <template>
-    <!-- This is for the recommended for you component -->
+    <!-- This is for the main component -->
     <div class="conatiner">
-      Recommend for you
+     Main
     </div>
   </template>
   
@@ -14,6 +14,6 @@
   <style scoped>
   .conatiner{
       border:2px solid black;
-      height:300px;
+      height:600px;
   }
   </style>
