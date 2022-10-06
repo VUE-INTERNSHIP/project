@@ -1,7 +1,8 @@
 <template>
-   <!-- I made this component to call Navbar, recommend and section as the right side of the project. --> 
+   <!-- I made this component to call Navbar, recommend, trending and section as the right side of the project. --> 
   <div class="main">
     <Navbar/>
+    <Trending/>
     <Recommend/>
     <Section/>
   </div> 
@@ -10,11 +11,13 @@
 
 <script>
   import Navbar from '@/components/Navbar.vue'
+  import Trending from '@/components/Trending.vue'
   import Recommend from '@/components/Recommend.vue'
   import Section from '@/components/Section.vue'
 export default {
  components:{
   Navbar,
+  Trending,
   Recommend,
   Section
  }
