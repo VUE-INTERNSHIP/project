@@ -1,34 +1,44 @@
 <template>
-  <div class="home">
-    <div class="container">
-   <Sidebar/>
-   <Navbar/>
-   <Recommend/>
-   <Main/> 
+  <div class="container">
+    <div class="sidebar">
+      <sidebar-component/>
     </div>
-  
+    <div class="main">
+      <search-component/>
+      <trending-component/>
+      <recomended-component/>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-
-import Sidebar from '@/components/Sidebar.vue'
-import Main from '@/components/Main.vue'
-
+import sidebarComponent from '../components/sidebarComponent.vue'
+import searchComponent from '../components/searchComponent.vue'
+import trendingComponent from '../components/trendingComponent.vue'
+import recomendedComponent from '../components/recomendedComponent.vue'
 export default {
-  name: 'HomeView',
   components: {
-    Sidebar,
-    Main  
-  },
-};
+    sidebarComponent,
+    searchComponent,
+    trendingComponent,
+    recomendedComponent,
+  }
+
+}
 </script>
 
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing: border-box;
+<style scoped>
+.container {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  height: 100vh;
+}
+.sidebar{
+  background-color: red;
+  color: white;
+}
+.main{
+  background-color: black;
+  color: white;
 }
 </style>
