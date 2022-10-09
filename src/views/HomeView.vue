@@ -1,44 +1,36 @@
 <template>
   <div class="container">
-    <div class="sidebar">
-      <sidebar-component/>
-    </div>
     <div class="main">
-      <search-component/>
-      <trending-component/>
+      <trending-component :data="data"/>
       <recomended-component/>
     </div>
   </div>
 </template>
 
 <script>
-import sidebarComponent from '../components/sidebarComponent.vue'
-import searchComponent from '../components/searchComponent.vue'
+ import Movies from '../datas/movies.js';
 import trendingComponent from '../components/trendingComponent.vue'
 import recomendedComponent from '../components/recomendedComponent.vue'
 export default {
   components: {
-    sidebarComponent,
-    searchComponent,
     trendingComponent,
     recomendedComponent,
-  }
+  },
+  data() {
+    return{
+      data: Movies
+    }
+  },
+  // props: {
+  //   movie: Array
+  // },
+  // mounted() {
+  //   console.log(this.movie)
+  // }
 
 }
 </script>
 
 <style scoped>
-.container {
-  display: grid;
-  grid-template-columns: 20% 80%;
-  height: 100vh;
-}
-.sidebar{
-  background-color: red;
-  color: white;
-}
-.main{
-  background-color: black;
-  color: white;
-}
+
 </style>
