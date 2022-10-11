@@ -32,5 +32,13 @@ export default {
 </script>
 
 <style scoped>
-
+.main{
+  background-color: #10141E;
+}
+@media screen and (min-width: 1000px){
+  .main{
+    float: right;
+  width: 92%;
+  }
+}
 </style>
