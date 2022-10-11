@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="recommended">
     this is the recomended component
   </div>
 </template>
@@ -11,5 +11,9 @@ export default {
 </script>
 
 <style>
+.recommended{
+  background-color: #10141E;
+  color: white;
+}
  
 </style>
