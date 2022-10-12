@@ -1,7 +1,7 @@
 <template>
   <div>
-    <i class="fas fa-user-secret"></i>
-    <h1>Recommended</h1>
+   
+    <h2>Recommended for you</h2>
     <p></p>
     <div class="container">
       <div class="row">
@@ -11,12 +11,13 @@
             <div class="movie-body">
               <div class="details">
                 <div class="year">
-                  <p>{{movie.year}} <i class="fa fa-circle" aria-hidden="true" id="circle" fa-33x></i></p>
+                  <p>{{movie.year}} <i class="fa fa-circle" id="circle"></i></p>
                 </div>
                 <div class="category">
-                  <p v-bind="movie">{{movie.category}} </p>
-                  <h1 v-if="movie.value=='Movie'"><i class="fa-solid fa-film" ></i></h1>
-                  <h1 v-else>Show!</h1>
+                  <p v-bind="movie">{{movie.category}} <i class="fa-solid fa-film" id="movieIcon"></i><i class="fa fa-circle"
+                      id="circle2"></i></p>
+
+
                 </div>
                 <div class="rating">
                   {{movie.rating}}
@@ -51,15 +52,19 @@ export default {
 
   data() {
     return {
-      film:this.movies.category
+
     }
   }
 }
 </script>
 
 <style scoped>
-#images {
-  padding: auto;
+
+h2{
+  text-align: left;
+  
+  margin-top:1%;
+color: whitesmoke;
 }
 
 img {
@@ -74,30 +79,43 @@ img {
   display: flex;
   flex-direction: row;
   margin-top: 1%;
-  color: lightgrey;
+  color: #d3d3d398;
   text-align: left;
   margin-left: 0%;
 
 }
 
-.rating,
-.category {
-  margin-left: 12px;
-}
 
+.category {
+  margin-left: 4%;
+}
+.rating{
+  margin-left: 5%;
+}
 .movie-title {
   margin-top: -5%;
   margin-left: 0;
   text-align: left;
   font-weight: 400;
   color: aliceblue;
+  padding-top: 2%;
 }
 
+/*#movieIcon{
+
+}*/
 #circle {
-  font-size: 5px;
-  margin-top:10px;
-  margin-left: 6px;
+  font-size: 4px;
+  margin-top: 10px;
+  margin-left: 1%;
   position: absolute;
-  color: brown;
+  color: #d3d3d398;
+}
+#circle2{
+  font-size: 4px;
+  margin-top: 10px;
+  position: absolute;
+  color: #d3d3d398;
+  margin-left: 2%;
 }
 </style> 
