@@ -2,7 +2,7 @@
   <div class="container">
     <div class="main">
       <trending-component :data="data"/>
-      <recomended-component/>
+      <recomended-component :movies="data"/>
     </div>
   </div>
 </template>
