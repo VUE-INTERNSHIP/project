@@ -1,10 +1,11 @@
 <template>
-  <div class="trending" ref="reff">
-    <h2>trendings</h2>
+  <div class="trending" ref="reff"
+   @mousedown="mouseDown" @mouseup="mouseUp" @mousemove="mouseMove">
+    <h3>Trendings</h3>
     <div class="trending-img" ref="refs" >
       <div v-for="(img, x) in trendings" class="divv" :key="x">
         <div class="imgs">
-          <img :src="img.thumbnail.trending" :alt="img.category">
+          <img :src="img.thumbnail.trending.large" :alt="img.category">
         </div>
       </div>
     </div>
@@ -13,6 +14,10 @@
 
 <script>
 
+    let pressed = false
+		let start;
+    let slider;
+    let trending;
 		
 export default {
   props: {
@@ -20,29 +25,38 @@ export default {
   },
   data(){
     return{
-      trendings: this.data
+      trendings: this.data,
+
     }
   },
-  mounted() {
-    this.trendings = this.trendings.filter(src => src.thumbnail.trending !== undefined)
-    console.log(this.trendings[0].thumbnail.trending.large);
-    let trending = this.$refs.reff        
-		let slider = this.$refs.refs
+  
+    mounted() {
+      this.trendings = this.trendings.filter(src => src.thumbnail.trending !== undefined)    
+    },
 
-		let pressed = false
-		let startX;
-
-		trending.addEventListener('mousedown', e => {
-			pressed = true;
-			startX = e.offsetX - slider.offsetLeft;
-		})
-		trending.addEventListener('mouseup',() => {
-			pressed = false
-		})
-
-		const checkBoundary = () =>{
+    methods:{
+     mouseDown(e) {
+		  slider = this.$refs.refs
+      // alert('Hello World')
+      pressed = true;
+			start = e.offsetX - slider.offsetLeft;
+    },
+    mouseUp(e){
+      pressed = false
+    },
+    mouseMove(e){
+		  slider = this.$refs.refs
+      if(!pressed) return 
+			e.preventDefault()
+			slider.style.left = `${e.offsetX - start}px`
+			this.checkBoundary()
+    },
+     checkBoundary(){
+      trending = this.$refs.reff        
+		  slider = this.$refs.refs
 			let outer = trending.getBoundingClientRect()
 			let inner = slider.getBoundingClientRect()
+      // console.log(inner);
 
 			if (parseInt(slider.style.left) > 0) {
 				slider.style.left = '0px'
@@ -51,13 +65,7 @@ export default {
 				slider.style.left = `-${inner.width - outer.width}px`
 			}
 		}
-		trending.addEventListener('mousemove',(e) => {
-			if(!pressed) return 
-			e.preventDefault()
-			slider.style.left = `${e.offsetX - startX}px`
-			checkBoundary()
-		})
-    }
+  },
 }
 
 </script>
@@ -69,34 +77,34 @@ export default {
   height: 250px;
   padding: 0;
   margin:0;
-  background: yellow;
   overflow: hidden;
+  text-align: left;
+  padding-left: 12px;
 }
-.trending h2{
+.trending h3{
   color:#fff;
   z-index: 10000;
   margin: 0;
   padding: 0;
+  letter-spacing: 1px;
 }
 .trending-img{
   width: 350%;
-  /* margin-top: 40px; */
-  /* background: green; */
   pointer-events: none;
 	position: absolute;
   display: flex;
   bottom: 0;
   left: 0;
+  padding-left: 12px;
 }
   .divv {
     position: relative;
     width: 600px;
     height: 200px;
-    background: red;
     margin-right: 10px;
     border-radius: 12px;
     overflow: hidden;
-    z-index: 10000;
+    /* z-index: 10000; */
   }
   .imgs{
     width: 100%;
@@ -107,6 +115,23 @@ export default {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height:100%;
+    object-fit: fill;
+  }
+  @media screen and (min-width: 768px) {
+    .trending-img{
+      width: 350%;
+    }
+    .divv{
+      width: 800px;
+    }
+  }
+  @media screen and (min-width: 1000px) {
+    .trending-img{
+      width: 200%;
+    }
+    .divv{
+      width: 600px;
+    }
   }
 </style> 

@@ -31,12 +31,12 @@ const routes = [
   {
     name: 'MoviesView',
     path: '/moviesview',
-    component: MoviesView.vue,
+    component: MoviesView
   },
   {
     name: 'SeriesView',
     path: '/seriesview',
-    component: SeriesView.vue
+    component: SeriesView
   }
 ];
 
