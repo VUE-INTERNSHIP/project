@@ -1,7 +1,7 @@
 <template>
   <div class="trending" ref="reff"
    @mousedown="mouseDown" @mouseup="mouseUp" @mousemove="mouseMove">
-    <h2>trendings</h2>
+    <h3>Trendings</h3>
     <div class="trending-img" ref="refs" >
       <div v-for="(img, x) in trendings" class="divv" :key="x">
         <div class="imgs">
@@ -78,12 +78,15 @@ export default {
   padding: 0;
   margin:0;
   overflow: hidden;
+  text-align: left;
+  padding-left: 12px;
 }
-.trending h2{
+.trending h3{
   color:#fff;
   z-index: 10000;
   margin: 0;
   padding: 0;
+  letter-spacing: 1px;
 }
 .trending-img{
   width: 350%;
@@ -92,6 +95,7 @@ export default {
   display: flex;
   bottom: 0;
   left: 0;
+  padding-left: 12px;
 }
   .divv {
     position: relative;

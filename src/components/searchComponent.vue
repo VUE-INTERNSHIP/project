@@ -20,7 +20,7 @@ export default {
     position: relative;
     width: 100%;
     margin: 0;
-    padding: 0;
+    padding: 0 12px;
   }
 
   .input input{
@@ -29,16 +29,14 @@ export default {
     border: none;
     outline: none;
     color: #fff;
-    padding: 12px 4em;
+    padding: 15px 4em;
     background-image: url('../assets/icon-search.svg');
     background-position-y: center;
     background-repeat: no-repeat;
     display: flex;
     align-items: center;
   }
-  input::placeholder{
-    /* color: #fff */
-  }
+
 
 *{
   --red: #FC4747;
@@ -48,52 +46,10 @@ export default {
   --white: #FFFFFF;
 }
 
-@media screen and (min-width: 0px) and (max-width: 1000px){
-.searchcomp{
-  width: 100%;
-  display: flex;
-  background-color: var(--darkBlue);
-  height: 50px;
-  margin: auto auto;
-}
-input{
-  width: inherit;
-  border: none;
-  background-color: var(--darkBlue);
-  height: inherit;
-  color: var(--white);
-  outline: none;
-}
-img{
-  width: 20px;
-  height: 20px;
-  margin: auto 10px;
-  border: none;
-}
-}
 @media screen and (min-width: 1000px){
-  .searchcomp{
-  width: 90%;
-  display: flex;
-  background-color: var(--darkBlue);
-  height: 50px;
-  margin: auto auto;
-}
-input{
-  width: inherit;
-  border: none;
-  background-color: var(--darkBlue);
-  height: inherit;
-  color: var(--white);
-  outline: none;
+
 
 }
-img{
-  width: 20px;
-  height: 20px;
-  margin: auto 10px;
-  border: none;
-}
-}
+
 </style> 
 
