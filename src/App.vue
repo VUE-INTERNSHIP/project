@@ -4,7 +4,7 @@
       <sidebar-component name="Abubakar Adamu" />
       <search-component />
     </div>
-    <router-view />
+    <router-view :movies="movies" />
   </div>
 </template>
 
@@ -27,7 +27,7 @@
       }
     },
     mounted() {
-      // console.log(this.movies);
+      console.log(this.movies);
     }
   }
 </script>
@@ -38,6 +38,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

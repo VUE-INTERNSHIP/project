@@ -1,20 +1,23 @@
 <template>
   <div class="container">
     <div class="main">
-      <trending-component :data="data"/>
-      <recomended-component/>
+      <trending-component :data="movies"/>
+      <recomended-component :data="movies"/>
     </div>
   </div>
 </template>
 
 <script>
- import Movies from '../datas/movies.js';
+//  import Movies from '../datas/movies.js';
 import trendingComponent from '../components/trendingComponent.vue'
 import recomendedComponent from '../components/recomendedComponent.vue'
 export default {
   components: {
     trendingComponent,
     recomendedComponent,
+  },
+  props:{
+    movies: Array
   },
   data() {
     return{
