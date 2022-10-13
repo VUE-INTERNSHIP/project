@@ -3,6 +3,8 @@ import VueRouter from 'vue-router';
 // import login from '../components/Authentication/login.vue';
 import HomeView from '../views/HomeView.vue'
 import Bookmarked from '../views/Bookmarked.vue'
+import MoviesView from '../views/MoviesView.vue'
+import SeriesView from '../views/SeriesView.vue'
 
 Vue.use(VueRouter);
 
@@ -26,6 +28,16 @@ const routes = [
     // component: () => import(/* webpackChunkName: "about" */ '../views/Bookmarked.vue'),
     component: Bookmarked
   },
+  {
+    name: 'MoviesView',
+    path: '/moviesview',
+    component: MoviesView
+  },
+  {
+    name: 'SeriesView',
+    path: '/seriesview',
+    component: SeriesView
+  }
 ];
 
 const router = new VueRouter({

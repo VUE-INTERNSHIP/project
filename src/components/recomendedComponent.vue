@@ -1,4 +1,5 @@
 <template>
+
   <div>
    
     <h2>Recommended for you</h2>
@@ -37,6 +38,7 @@
         </div>
       </div>
     </div>
+
   </div>
 
 </template>
@@ -48,15 +50,18 @@
 
 
 export default {
+
   props: ['movies'],
 
   data() {
     return {
 
     }
+
   }
 }
 </script>
+
 
 <style scoped>
 
@@ -119,3 +124,4 @@ img {
   margin-left: 2%;
 }
 </style> 
+
