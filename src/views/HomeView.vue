@@ -2,8 +2,10 @@
   <div class="container">
     <search-component />
     <div class="main">
-      <trending-component :data="movies"/>
-      <recomended-component :data="movies"/>
+
+      <trending-component :data="data"/>
+      <recomended-component :movies="data"/>
+
     </div>
   </div>
 </template>
