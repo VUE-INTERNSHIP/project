@@ -11,7 +11,7 @@
 </template>
 
 <script>
-//  import Movies from '../datas/movies.js';
+ import Movies from '../datas/movies.js';
 import trendingComponent from '../components/trendingComponent.vue'
 import recomendedComponent from '../components/recomendedComponent.vue'
 import SearchComponent from '../components/searchComponent.vue';
@@ -22,7 +22,7 @@ export default {
     SearchComponent,
   },
   props:{
-    movies: Array
+    movies: Array 
   },
   data() {
     return{
@@ -38,7 +38,7 @@ export default {
 
 }
 </script>
-
+ 
 <style scoped>
 .container{
   position:relative;

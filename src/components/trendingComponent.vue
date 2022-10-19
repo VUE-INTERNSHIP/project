@@ -17,7 +17,7 @@
     let pressed = false
 		let start;
     let slider;
-    let trending;
+    let trending; 
 		
 export default {
   props: {
@@ -41,19 +41,19 @@ export default {
       pressed = true;
 			start = e.offsetX - slider.offsetLeft;
     },
-    mouseUp(e){
+    mouseUp(){
       pressed = false
     },
     mouseMove(e){
-		  slider = this.$refs.refs
+		slider = this.$refs.refs
       if(!pressed) return 
 			e.preventDefault()
 			slider.style.left = `${e.offsetX - start}px`
-			this.checkBoundary()
+			this.checkBoundary() 
     },
      checkBoundary(){
       trending = this.$refs.reff        
-		  slider = this.$refs.refs
+		slider = this.$refs.refs
 			let outer = trending.getBoundingClientRect()
 			let inner = slider.getBoundingClientRect()
       // console.log(inner);
@@ -71,15 +71,15 @@ export default {
 </script>
 
 <style scoped>
+
 .trending{
   position: relative;
   width: 100%;
   height: 250px;
   padding: 0;
-  margin:0;
+  margin:0; 
   overflow: hidden;
   text-align: left;
-  padding-left: 12px;
 }
 .trending h3{
   color:#fff;
@@ -95,7 +95,7 @@ export default {
   display: flex;
   bottom: 0;
   left: 0;
-  padding-left: 12px;
+  /* padding-left: 12px; */
 }
   .divv {
     position: relative;
