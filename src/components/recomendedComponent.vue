@@ -19,7 +19,7 @@
                       id="circle2"></i></p>
 
 
-                </div>
+                </div> 
                 <div class="rating">
                   {{movie.rating}}
 
