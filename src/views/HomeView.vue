@@ -36,7 +36,7 @@ export default {
   //   console.log(this.movie)
   // }
 
-}
+} 
 </script>
  
 <style scoped>

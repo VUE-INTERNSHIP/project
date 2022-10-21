@@ -3,7 +3,7 @@
   <div>
    
     <h2>Recommended for you</h2>
-    <p></p>
+    <p></p> 
     <div class="container">
       <div class="row">
         <div class="col-4 d-flex" v-for="movie in movies">
@@ -118,7 +118,7 @@ img {
 }
 #circle2{
   font-size: 4px;
-  margin-top: 10px;
+  margin-top: 10px; 
   position: absolute;
   color: #d3d3d398;
   margin-left: 2%;

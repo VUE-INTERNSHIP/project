@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style scoped>
-h1{
+h1{ 
     /* color: red;
     font-size: 40px; */
     margin-top: 4rem;

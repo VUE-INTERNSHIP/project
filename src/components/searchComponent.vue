@@ -5,7 +5,7 @@
       <input type="search" placeholder="Search for movies or TV series here" />
     </label>
 </div>
- 
+  
 </template>
 
 <script>
@@ -23,7 +23,7 @@ export default {
     padding: 0 12px;
   }
 
-  .input input{
+  .input input{ 
     width: 100%;
     background: transparent;
     border: none;
