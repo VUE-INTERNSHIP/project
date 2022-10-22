@@ -4,13 +4,21 @@
     <h3>Trendings</h3>
     <div class="trending-img" ref="refs" >
       <div v-for="(img, x) in trendings" class="divv" :key="x">
+        <div class="booked">
+          <span v-if="img.isBookmarked" class="book"><img src="../assets/bookMarkFull.svg" :alt="img.title" /></span>
+          <span v-if="!img.isBookmarked" class="book"><img src="../assets/icon-bookmark-empty.svg" :alt="img.title"/></span>
+      </div>
         <div class="imgs">
           <img :src="img.thumbnail.trending.large" :alt="img.category">
+        </div>
+        <div class="msg">
+          <p><span>{{img.year}}</span><span v-if="img.category === 'TV Series'" class="span"><img class="svg" src="../assets/icon-category-tv.svg" alt="" />{{img.category}}</span> <span v-if="img.category === 'Movie'" class="span"><img class="svg" src="../assets/icon-category-movie.svg" alt="" />{{img.category}}</span> <span class="last">{{img.rating}}</span></p>
+          <p>{{img.title}}</p>
         </div>
       </div>
     </div>
   </div>
-</template>
+</template> 
 
 <script>
 
@@ -106,6 +114,61 @@ export default {
     overflow: hidden;
     /* z-index: 10000; */
   }
+  .booked{
+    position: absolute;
+    z-index: 1;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+   .msg{
+    position: absolute;
+    z-index: 100000;
+    text-align: left;
+    padding-top: 10px;
+    bottom: 10px;
+    left: 10px;
+  }
+  .msg p:nth-child(2){
+    color:#fff;
+    font-size: 18px;
+    margin: 0;
+    opacity: 1;
+  }
+  p{
+    display: flex;
+    align-items: center;
+    color:#fff;
+    font-size: 13px;
+    opacity: 1;
+    font-weight: lighter;
+    margin: 0;
+  }
+  p span{
+    position: relative;
+    margin-right: 15px;
+  }
+  .span{
+    display: flex;
+    align-items: center;
+  }
+  .span img{
+    margin-right: 10px;
+  }
+  p span:not(.last):before{
+    position: absolute;
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #fff;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
   .imgs{
     width: 100%;
     height: 100%;
@@ -124,6 +187,16 @@ export default {
     }
     .divv{
       width: 800px;
+    }
+    .booked{
+      top: 20px;
+      right: 20px;
+    }
+    p:nth-child(1){
+      font-size: 12px;
+    }
+    .msg p:nth-child(2){
+      font-size: 20px;
     }
   }
   @media screen and (min-width: 1000px) {
