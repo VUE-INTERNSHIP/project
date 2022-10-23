@@ -1,19 +1,156 @@
 <template>
   <div class="moviesview">
-    <h1>THIS IS THE MOVIES VIEW</h1>
+    <div class="container" v-for="movie in filteredMovies" :key="movie.title">
+      <div class="img-container">
+       
+        <!-- main image -->
+        <img :src="movie.thumbnail.regular.medium" class="img">
+       
+        <!-- Bookmarked signs -->
+        <span class="bookmarked" v-if="movie.isBookmarked">
+          <img src="@/assets/bookMarkFull.svg">
+        </span>
+        <span class="bookmarked" v-if="!movie.isBookmarked">
+          <img src="@/assets/bookMarkEmpty.svg">
+        </span>
+       <div class="play-btn-background">
+        <div class="play-btn-effect">
+          <img src="@/assets/icon-play.svg" alt="" srcset=""><span>Play</span>
+        </div>
+       </div>
+     </div>
+      <ul>
+        <li>{{movie.year}}</li>
+        <li class="movie-cat"><img src="@/assets/icon-category-movie.svg"> {{movie.category}}</li>
+        <li>{{movie.rating}}</li>
+      </ul>
+      <p>{{movie.title}}</p>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
+import Movies from '@/datas/movies.js';
 
+export default {
+  data(){
+    return{
+      movies : Movies
+    }
+  },
+  computed:{
+    filteredMovies: function(){
+      return this.movies.filter(movie=>{
+        return movie.category ==="Movie"
+      })
+    }
+  }
 }
 </script>
 
 <style scoped>
-h1{
-    /* color: red;
-    font-size: 40px; */
-    margin-top: 4rem;
+*{
+  margin:0;
+  padding:0;
+}
+.moviesview{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap:4%;
+  padding:10px 20px;
+  color:white;
+}
+.container{
+  margin:10px 0;
+}
+.img-container{
+  position:relative;
+}
+.bookmarked{
+  position:absolute;
+  right:15px;
+  top:10px;
+  padding:10px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.507);
+}
+.img{
+ border-radius: 15px;
+}
+.play-btn-background{
+  position:absolute;
+  min-height:100%;
+  width:100%;
+  background:rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  top:0;
+  left:0;
+  display:flex;
+  justify-content:center;
+  align-items: center; 
+  transition:all .3s;
+  opacity:0;
+}
+.play-btn-background:hover{
+  opacity:1;
+}
+.play-btn-effect{
+  display: flex;
+  align-items: center;
+  border-radius:20px;
+  padding:5px;
+  background: rgba(240, 232, 232, 0.418);
+  cursor:pointer;
+}
+.play-btn-effect span{
+  padding:0 5px
+} 
+ul{
+  display:flex;
+  justify-content: flex-start;
+  width:100%; 
+  /* border:2px solid red; */
+}
+li{
+  font-size:14px;
+  font-weight:100;
+  margin:5px;
+  margin-left:0px;
+}
+li:first-child{
+  list-style: none;
+  margin-left:0px;
+}
+li:last-child{
+  margin-left:20px;
+}
+.movie-cat{
+  display:flex;
+  align-items: center;
+}
+.movie-cat > img{
+  background-color:rgb(255, 255, 255);
+  margin:0 7px;
+  border-radius: 5px;
+  width:15px;
+  height:15px;
+  }
+  @media screen and (max-width:768px) {
+  .moviesview{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap:4%;
+    padding:10px 20px;
+    color:white;
+  }
+  }
+  @media screen and (max-width:480px) {
+    .moviesview{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap:4%;
+      padding:none;
+      color:white;
+  }
   }
 </style>
