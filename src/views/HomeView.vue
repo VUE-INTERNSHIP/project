@@ -2,14 +2,16 @@
   <div class="container">
     <search-component />
     <div class="main">
-      <trending-component :data="movies"/>
-      <recomended-component :data="movies"/>
+
+      <trending-component :data="data"/>
+      <recomended-component :movies="data"/>
+
     </div>
   </div>
 </template>
 
 <script>
-//  import Movies from '../datas/movies.js';
+ import Movies from '../datas/movies.js';
 import trendingComponent from '../components/trendingComponent.vue'
 import recomendedComponent from '../components/recomendedComponent.vue'
 import SearchComponent from '../components/searchComponent.vue';
@@ -20,7 +22,7 @@ export default {
     SearchComponent,
   },
   props:{
-    movies: Array
+    movies: Array 
   },
   data() {
     return{
@@ -34,9 +36,9 @@ export default {
   //   console.log(this.movie)
   // }
 
-}
+} 
 </script>
-
+ 
 <style scoped>
 .container{
   position:relative;

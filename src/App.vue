@@ -24,7 +24,7 @@
       return{
         movies: Movies  
       }
-    },
+    }, 
     mounted() {
       console.log(this.movies);
     }
