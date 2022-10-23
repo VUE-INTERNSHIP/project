@@ -4,13 +4,16 @@
     <h3>Trendings</h3>
     <div class="trending-img" ref="refs" >
       <div v-for="(img, x) in trendings" class="divv" :key="x">
+        <div class="hover">
+          <img src="../assets/icon-play.svg" alt=""> <span>play</span>
+        </div>
         <div class="booked">
           <span v-if="img.isBookmarked" class="book"><img src="../assets/bookMarkFull.svg" :alt="img.title" /></span>
           <span v-if="!img.isBookmarked" class="book"><img src="../assets/icon-bookmark-empty.svg" :alt="img.title"/></span>
       </div>
         <div class="imgs">
           <img :src="img.thumbnail.trending.large" :alt="img.category">
-        </div>
+        </div> 
         <div class="msg">
           <p><span>{{img.year}}</span><span v-if="img.category === 'TV Series'" class="span"><img class="svg" src="../assets/icon-category-tv.svg" alt="" />{{img.category}}</span> <span v-if="img.category === 'Movie'" class="span"><img class="svg" src="../assets/icon-category-movie.svg" alt="" />{{img.category}}</span> <span class="last">{{img.rating}}</span></p>
           <p>{{img.title}}</p>
@@ -113,6 +116,33 @@ export default {
     border-radius: 12px;
     overflow: hidden;
     /* z-index: 10000; */
+    /* pointer-events: all; */
+  }
+   .imgs:hover img{
+    /* cursor: pointer; */
+    pointer-events: all;
+    opacity: .4;
+  }
+   .hover{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10000000000;
+    padding: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    visibility: hidden;
+
+  }
+  .divv:hover .hover{
+    visibility: visible;
+    cursor: pointer;
+  }
+  .hover img{
+    margin-right: 10px;
   }
   .booked{
     position: absolute;
