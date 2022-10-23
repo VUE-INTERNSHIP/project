@@ -7,14 +7,15 @@
 </div>
     <div class="seriesview">
     <div class="series" v-for="movie in searchInput" :key="movie.title">
-      <!-- <span>{{movie.isBookmarked ?<img src="../assets/icon-bookmark-empty.svg" alt="">: ''}}</span> -->
+      <div class="hover">
+          <img src="../assets/icon-play.svg" alt=""> <span>play</span>
+        </div>
       <div class="booked">
           <span v-if="movie.isBookmarked" class="book"><img src="../assets/bookMarkFull.svg" :alt="movie.title" /></span>
           <span v-if="!movie.isBookmarked" class="book"><img src="../assets/icon-bookmark-empty.svg" :alt="movie.title"/></span>
       </div>
       <div class="img">
         <img :src="movie.thumbnail.regular.small" :alt="movie.title">
-       
       </div>
       <div class="msg">
         <p><span>{{movie.year}}</span><span class="span"><img class="svg" src="../assets/icon-category-tv.svg" alt="" /> {{movie.category}}</span><span class="last">{{movie.rating}}</span></p>
@@ -63,7 +64,7 @@ export default {
   margin: 0;
   padding: 20px;
   width: 100%;
-  padding-top: 0;
+  /* padding-top: 10px; */
 }
 .input{
     position: relative;
@@ -103,13 +104,16 @@ label{
 .series{ 
     position: relative;
     /* margin-bottom: 15px; */
+    /* transition: .5s; */
   }
+ 
   .img{
     position: relative;
     width: 100%;
     height: 120px;
     border-radius: 22px;
     overflow: hidden;
+    /* z-index: 1000; */
   }
   .img img{
     position: absolute;
@@ -117,8 +121,31 @@ label{
     left: 0;
     width: 100%;
     height: 100%;
-    /* object-fit: cover; */
+  } 
+  .series:hover .img img{
+    cursor: pointer;
+    opacity: .4;
+  }
+   .hover{
+    position: absolute;
+    left: 50%;
+    top: 36%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    padding: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    visibility: hidden;
 
+  }
+  .series:hover .hover{
+    visibility: visible;
+    cursor: pointer;
+  }
+  .hover img{
+    margin-right: 10px;
   }
   .booked{
     position: absolute;
@@ -177,7 +204,7 @@ label{
     .seriesview{
       grid-template-columns: repeat(3,1fr);
     }
-    .img{
+    .img{ 
       height: 180px;
     }
     .booked{
