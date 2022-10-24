@@ -1,6 +1,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import login from '../components/Authentication/login.vue';
+// import login from '../components/Authentication/login.vue';
+import HomeView from '../views/HomeView.vue'
+import Bookmarked from '../views/Bookmarked.vue'
+import MoviesView from '../views/MoviesView.vue'
+import SeriesView from '../views/SeriesView.vue'
 import signup from '../components/Authentication/signup.vue'
 
 Vue.use(VueRouter);
@@ -8,22 +12,37 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    name: 'login',
-    component: login,
+    name: 'HomeView',
+    component: HomeView,
   },
+  // {
+  //   path: '/home',
+  //   name: 'home',
+  //   component: () => import(/* webpackChunkName: "about" */ '../views/HomeView.vue'),
+  // },
   {
     path: '/home',
     name: 'home',
     component: () => import(/* webpackChunkName: "about" */ '../views/HomeView.vue'),
   },
   {
-    path: '/signup',
-    name: 'Signup',
+    path: '/about',
+    name: 'about',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: signup
+    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
   },
+  {
+    name: 'MoviesView',
+    path: '/moviesview',
+    component: MoviesView
+  },
+  {
+    name: 'SeriesView',
+    path: '/seriesview',
+    component: SeriesView
+  }
 ];
 
 const router = new VueRouter({

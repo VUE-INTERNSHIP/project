@@ -1,32 +1,77 @@
 <template>
   <div id="app">
-    <!-- <nav>
-      <router-link to="/home">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav> -->
-    <router-view/>
+    <div class="side_bar">
+      <sidebar-component id="side" />
+    </div>
+    <div class="routes">
+      <router-view :movies="movies" />
+    </div>
   </div>
 </template>
 
+<script>
+  import HomePage from './views/HomeView.vue';
+  import Movies from './datas/movies.js';
+  import SidebarComponent from './components/sidebarComponent.vue';
+
+  export default {
+    components: {
+    Movies,
+    HomePage,
+    SidebarComponent
+},
+    data() {
+      return{
+        movies: Movies  
+      }
+    }, 
+    mounted() {
+      console.log(this.movies);
+    }
+  }
+</script>
+
 <style>
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* text-align: center; */
+  text-align: center;
   color: #2c3e50;
 }
+/* Main App Styling by DeadEazy */
 
-nav {
-  padding: 30px;
+
+
+/* .icon:active{
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
+} */
+@media screen and (min-width: 1000px) {
+#app{
+  display: grid;
+  grid-template-columns: 80px 1fr;
 }
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
+ #side{
+  height: 500px;
+  width: 60px;
+  background-color: var(--semiDarkBlue);
+  border-radius: 0 0 15px 15px;
+  position: relative;
+  margin: 0 auto;
+  top: 0;
+}
+.side_bar{
+  margin: 0;
+  padding: 0;
+  position: relative;
 }
 
-nav a.router-link-exact-active {
-  color: #42b983;
 }
 </style>

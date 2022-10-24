@@ -16,7 +16,7 @@
             class="pass"
           />
           <div class="button-group">
-            <button type="submit" @click="handleSubmit">Login</button>
+            <button type="submit" @click="handleSubmit"> <router-link v-bind:to="{name:'home'}">Login</router-link> </button>
             <router-link :to="{name:'Signup'}" class="Signup">Sign Up</router-link> 
           </div>
         </form>
