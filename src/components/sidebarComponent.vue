@@ -15,7 +15,7 @@
 export default {
  
 }
-</script>
+</script> 
  
 <style scoped>
 *{
@@ -79,7 +79,7 @@ img{
 #logoimage{
   width: 20px;
 }
-.sidebar{
+.sidebar{ 
   max-width: 500px;
   height: 50px;
   margin: auto;
