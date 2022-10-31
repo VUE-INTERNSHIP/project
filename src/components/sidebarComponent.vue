@@ -2,10 +2,10 @@
   <div class="sidebar">
    <div id="sideb">
          <div id="logo"><img src="../assets/logo.svg" alt="" id="logoimage" class="icon" ></div>
-         <div id="menu" :class="{active: isActive}"><router-link to="/"><img src="../assets/icon-nav-home.svg" alt="" class="icon" ></router-link></div>
-         <div id="icon3"><router-link to="/moviesview"><img src="../assets/icon-nav-movies.svg" class="icon" alt="" ></router-link></div>
-         <div id="icon4"><router-link to="/seriesview"><img src="../assets/icon-nav-tv-series.svg"  alt="" class="icon" ></router-link></div>
-         <div id="icon5"><router-link to="/bookmarked"><img src="../assets/icon-nav-bookmark.svg" alt="" class="icon" ></router-link></div>
+         <div id="menu"   ><router-link to="/"><img src="../assets/icon-nav-home.svg" alt="" class="icon" ></router-link></div>
+         <div id="icon3" ><router-link to="/moviesview"><img src="../assets/icon-nav-movies.svg" class="icon" alt="" ></router-link></div>
+         <div id="icon4"  ><router-link to="/seriesview"><img src="../assets/icon-nav-tv-series.svg"  alt="" class="icon" ></router-link></div>
+         <div id="icon5"  ><router-link to="/bookmarked"><img src="../assets/icon-nav-bookmark.svg" alt="" class="icon" ></router-link></div>
      <div id="avatar"><img src="../assets/image-avatar.png" alt="" ></div>
    </div>
   </div>
@@ -15,7 +15,11 @@
 export default {
  data() {
   return {
-    isActive: true,
+    isActive1: false,
+    isActive2: false,
+    isActive3: false,
+    isActive4: false,
+    notActive: false,
   }
  },
 }
@@ -26,11 +30,14 @@ export default {
   padding: 0;
   margin: 0;
 }
+.iconcolor{
+  filter: invert(40%) sepia(37%) saturate(419%) hue-rotate(184deg) brightness(93%) contrast(89%);
+}
 .icon:hover{
   filter: invert(89%) sepia(100%) saturate(2%) hue-rotate(282deg) brightness(109%) contrast(101%);
 }
-.icon:active{
-  filter: invert(60%) sepia(90%) saturate(5299%) hue-rotate(335deg) brightness(105%) contrast(107%);
+a.router-link-exact-active{
+   filter: invert(60%) sepia(90%) saturate(5299%) hue-rotate(335deg) brightness(105%) contrast(107%);
 }
 .icon{
   filter: invert(40%) sepia(37%) saturate(419%) hue-rotate(184deg) brightness(93%) contrast(89%);
