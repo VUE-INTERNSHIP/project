@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="side_bar">
-      <sidebar-component id="side" />
+      <sidebar-component id="side"  v-if="this.$route.name !== 'login' || this.$route.name !== 'signup'" />
     </div>
     <div class="routes">
       <router-view :movies="movies" />
@@ -22,12 +22,15 @@
 },
     data() {
       return{
-        movies: Movies  
+        movies: Movies,
+   
       }
     }, 
     mounted() {
-      console.log(this.movies);
-    }
+      console.log(this.$route.name);
+
+    },
+   
   }
 </script>
 
@@ -35,7 +38,7 @@
 *{
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
 }
 
 #app {
@@ -51,7 +54,6 @@
   --grayishBlue: #5A698F;
   --semiDarkBlue: #161D2F;
   --white: #FFFFFF;
-  /* display: grid; */
 }
 /* Main App Styling by DeadEazy */
 
@@ -75,6 +77,9 @@
   position: sticky;
   margin: 0 auto;
   top: 0;
+}
+#side .remove-side{
+  display:none;
 }
 .side_bar{
   margin: 0;

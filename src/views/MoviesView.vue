@@ -130,9 +130,9 @@ li:last-child {
   align-items: center;
 }
 .movie-cat > img {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(8, 8, 8);
   margin: 0 7px;
-  border-radius: 5px;
+  border-radius: 2px;
   width: 15px;
   height: 15px;
 }
