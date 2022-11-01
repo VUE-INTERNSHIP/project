@@ -26,7 +26,7 @@
 
 <script>
 export default {
-  name: 'login-component',
+  name: 'login',
   data(){
     return{
       userName:'',
