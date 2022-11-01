@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <div class="side_bar">
-      <sidebar-component id="side"  v-if="this.$route.name !== 'login' || this.$route.name !== 'signup'" />
+    <div class="side_bar" v-if="this.$route.name !== 'login' && this.$route.name !== 'signup'">
+      <sidebar-component id="side"/>
     </div>
     <div class="routes">
       <router-view :movies="movies" />
