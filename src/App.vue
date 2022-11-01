@@ -62,18 +62,19 @@
 /* .icon:active{
   filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
 } */
-@media screen and (min-width: 1000px) {
+
+@media screen and (min-width: 768px) {
 #app{
   display: grid;
   grid-template-columns: 80px 1fr;
 }
 
  #side{
-  height: 500px;
+  height: inherit;
   width: 60px;
   background-color: var(--semiDarkBlue);
-  border-radius: 0 0 15px 15px;
-  position: relative;
+  border-radius: 15px;
+  position: sticky;
   margin: 0 auto;
   top: 0;
 }
@@ -83,7 +84,10 @@
 .side_bar{
   margin: 0;
   padding: 0;
-  position: relative;
+  position: sticky;
+  top:0;
+  height: 95vh;
+  margin-top: 15px;
 }
 
 }
