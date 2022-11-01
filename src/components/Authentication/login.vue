@@ -16,8 +16,8 @@
             class="pass"
           />
           <div class="button-group">
-            <button type="submit" @click="handleSubmit"> <router-link v-bind:to="{name:'home'}">Login</router-link> </button>
-            <router-link :to="{name:'Signup'}" class="Signup">Sign Up</router-link> 
+            <button type="submit" @click="handleSubmit"> <router-link :to="{name:'home'}" class="go">Login</router-link></button>
+            <router-link :to="{name:'signup'}" class="Signup">Sign Up</router-link> 
           </div>
         </form>
       </section>
@@ -108,6 +108,10 @@ button{
 .login-image > img{
     width: 400px;
     height: 50vh;
+}
+.go{
+  color:white;
+  text-decoration :none;
 }
 .Signup{
     display: inline-block;

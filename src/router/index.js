@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-// import login from '../components/Authentication/login.vue';
+import login from '../components/Authentication/login.vue'
 import HomeView from '../views/HomeView.vue'
 import Bookmarked from '../views/Bookmarked.vue'
 import MoviesView from '../views/MoviesView.vue'
@@ -12,8 +12,8 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    name: 'HomeView',
-    component: HomeView,
+    name: 'login',
+    component: login
   },
   // {
   //   path: '/home',
@@ -26,6 +26,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/HomeView.vue'),
   },
   {
+    name: 'signup',
+    path: '/signup',
+    component:signup
+  },
+  {
     name: 'MoviesView',
     path: '/moviesview',
     component: MoviesView
@@ -34,6 +39,11 @@ const routes = [
     name: 'SeriesView',
     path: '/seriesview',
     component: SeriesView
+  },
+  {
+    name: 'homeview',
+    path: '/seriesview',
+    component: HomeView
   }
 ];
 
