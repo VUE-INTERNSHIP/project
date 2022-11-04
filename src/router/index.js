@@ -44,6 +44,11 @@ const routes = [
     name: 'homeview',
     path: '/seriesview',
     component: HomeView
+  },
+  {
+    name: 'Bookmarked',
+    path: '/Bookmarked',
+    component: Bookmarked
   }
 ];
 
