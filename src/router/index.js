@@ -28,7 +28,7 @@ const routes = [
   {
     name: 'signup',
     path: '/signup',
-    component:signup
+    component:signup                   
   },
   {
     name: 'MoviesView',
@@ -44,6 +44,11 @@ const routes = [
     name: 'homeview',
     path: '/seriesview',
     component: HomeView
+  },
+  {
+    name: 'Bookmarked',
+    path: '/Bookmarked',
+    component: Bookmarked
   }
 ];
 
