@@ -4,37 +4,53 @@
       <sidebar-component id="side"/>
     </div>
     <div class="routes">
-      <router-view :movies="movies" />
+      <router-view/>
     </div>
   </div>
+  <!-- <div>
+    <div v-for="done in dones" :key="done.id" >
+      <p @click="chnId(done.id)">{{done.name}} {{done.done}}</p>
+    </div>
+    <div>
+      <h4>Dned..</h4>
+      <div v-for="(dn, x) in donn" :key="x">
+        <h2>{{dn.name}}</h2>
+       </div>
+    </div>
+  </div> -->
 </template>
-
+ 
 <script>
   import HomePage from './views/HomeView.vue';
-  import Movies from './datas/movies.js';
   import SidebarComponent from './components/sidebarComponent.vue';
 
   export default {
     components: {
-    Movies,
     HomePage,
     SidebarComponent
-},
-    data() {
-      return{
-        movies: Movies,
-   
-      }
-    }, 
-    mounted() {
-      console.log(this.$route.name);
-
+}, 
+    
+    beforeCreate() {
+      this.$store.commit('loadStore');
+	  },
+    created() {
+      this.$store.commit('nameScs');
+      
     },
    
+    methods: {
+     
+    }
   }
+   
 </script>
 
 <style>
+/* p{
+  cursor: pointer;
+  background: #FC4747;
+  padding: 12px;
+} */
 *{
   margin: 0;
   padding: 0;

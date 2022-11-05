@@ -1,201 +1,252 @@
 <template>
-  <div class="bookmarked">
-    <h1 class="header">Bookmarked Movies</h1>
-    <div class="movies-series">
-    <div class="container" v-for="movie in filteredMovies" :key="movie.title">
-      <div class="img-container">
-        <!-- main image -->
-        <img :src="movie.thumbnail.regular.medium" class="img" />
+  <div class="cont">
+    <div class="input">
+      <label>
+        <input v-model="search" type="search" placeholder="Search for bookmarked shows" />
+      </label>
+    </div>
 
-        <!-- Bookmarked signs -->
-        <span class="bookmarked-img" v-if="movie.isBookmarked">
-          <img src="@/assets/bookMarkFull.svg" />
-        </span>
-        <div class="play-btn-background">
-          <div class="play-btn-effect">
-            <img src="@/assets/icon-play.svg" alt="" srcset="" /><span>Play</span>
-          </div>
+    <h2>Bookmarked Movies</h2>
+    <div class="seriesview">
+      <div class="series" v-for="movie in searchInput" :key="movie.title" v-if="movie.category === 'Movie' ">
+        <div class="hover">
+            <img src="../assets/icon-play.svg" alt=""> <span>play</span>
+        </div> 
+        <div class="booked">
+            <span v-if="movie.isBookmarked" class="book"><img src="../assets/bookMarkFull.svg" :alt="movie.title" /></span>
+            <span v-if="!movie.isBookmarked" class="book"><img src="../assets/icon-bookmark-empty.svg" :alt="movie.title"/></span>
+        </div>
+        <div class="img">
+          <img :src="movie.thumbnail.regular.small" :alt="movie.title">
+        </div>
+        <div class="msg"> 
+          <p><span>{{movie.year}}</span><span v-if="movie.category === 'TV Series'" class="span"><img class="svg" src="../assets/icon-category-tv.svg" alt="" />{{movie.category}}</span> <span v-if="movie.category === 'Movie'" class="span"><img class="svg" src="../assets/icon-category-movie.svg" alt="" />{{movie.category}}</span> <span class="last">{{movie.rating}}</span></p>
+          <p>{{movie.title}}</p>
         </div>
       </div>
-      <ul>
-        <li>{{ movie.year }}</li>
-        <li class="movie-cat">
-          <img src="@/assets/icon-category-movie.svg" /> {{ movie.category }}
-        </li>
-        <li>{{ movie.rating }}</li>
-      </ul>
-      <p>{{ movie.title }}</p>
     </div>
-  </div>
-  <h1 class="header">Bookmarked TV Series</h1>
-    <div class="movies-series">
-    <div class="container" v-for="series in filteredSeries" :key="series.title">
-      <div class="img-container">
-        <!-- main image -->
-        <img :src="series.thumbnail.regular.medium" class="img" />
 
-        <!-- Bookmarked signs -->
-        <span class="bookmarked-img" v-if="series.isBookmarked">
-          <img src="@/assets/bookMarkFull.svg" />
-        </span>
-        <div class="play-btn-background">
-          <div class="play-btn-effect">
-            <img src="@/assets/icon-play.svg" alt="" srcset="" /><span>Play</span>
-          </div>
+    <h2>Bookmarked TV Series</h2>
+    <div class="seriesview">
+      <div class="series" v-for="movie in searchInput" :key="movie.title" v-if="movie.category === 'TV Series'" >
+        <div class="hover">
+            <img src="../assets/icon-play.svg" alt=""> <span>play</span>
+        </div> 
+        <div class="booked">
+            <span v-if="movie.isBookmarked" class="book"><img src="../assets/bookMarkFull.svg" :alt="movie.title" /></span>
+            <span v-if="!movie.isBookmarked" class="book"><img src="../assets/icon-bookmark-empty.svg" :alt="movie.title"/></span>
+        </div>
+        <div class="img">
+          <img :src="movie.thumbnail.regular.small" :alt="movie.title">
+        </div>
+        <div class="msg">
+          <p><span>{{movie.year}}</span><span class="span"><img class="svg" src="../assets/icon-category-tv.svg" alt="" /> {{movie.category}}</span><span class="last">{{movie.rating}}</span></p>
+          <p>{{movie.title}}</p>
         </div>
       </div>
-      <ul>
-        <li>{{ series.year }}</li>
-        <li class="movie-cat">
-          <img src="@/assets/icon-category-tv.svg" /> {{ series.category }}
-        </li>
-        <li>{{ series.rating }}</li>
-      </ul>
-      <p>{{ series.title }}</p>
     </div>
-  </div>
   </div>
 </template>
 
 <script>
-import Movies from "@/datas/movies.js";
-
+//  import Movies from '../datas/movies.js';
 export default {
-  data() {
-    return {
-      movies: Movies,
-    };
-  },
-  computed: {
-    filteredMovies: function () {
-      return this.movies.filter((movie) => {
-        return  movie.isBookmarked ==true  && movie.category=="Movie";
-      });
-    },
-    filteredSeries: function(){
-      return this.movies.filter((series)=>{
-        return series.isBookmarked==true && series.category == "TV Series"
-      })
+
+  data(){
+    return{
+      series: [],
+      search: '',
     }
   },
-};
+  
+    mounted() {
+      this.series = this.series.filter(src => src.isBookmarked === true )
+      console.log(this.series); 
+
+      this.series = this.$store.getters.getStates
+   
+    },
+    computed: {
+      searchInput() {
+        let series = [...this.series]
+        return series = series.filter(src => src.title.toLowerCase().includes(this.search.toLowerCase()))
+      }
+    }
+}
 </script>
 
 <style scoped>
-* {
+.cont{
+  position: relative;
+  margin: 0;
+  padding: 20px 10px;
+  width: 100%;
+  /* padding-top: 10px; */
+  text-align: left;
+}
+.cont h2{
+  margin: 20px 0;
+  color: #fff;
+
+}
+.input{
+    position: relative;
+    width: 100%;
+    margin: 0;
+    /* padding: 0 12px; */
+  }
+label{
+  width: 100%;
   margin: 0;
   padding: 0;
 }
-.header{
-  color:#fff;
-  margin:10px 20px;
-  font-weight: 100;
-}
-.movies-series {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-column-gap: 4%;
-  padding: 10px 20px;
-  color: white;
-}
-.container {
-  margin: 10px 0;
-}
-.img-container {
+  .input input{ 
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    padding: 15px 4em;
+    background-image: url('../assets/icon-search.svg');
+    background-position-y: center;
+    background-repeat: no-repeat;
+    /* display: flex;
+    align-items: center; */
+  }
+
+
+.seriesview{
   position: relative;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, 1fr );
+  color:#fff;
 }
-.bookmarked-img {
-  position: absolute;
-  right: 15px;
-  top: 10px;
-  padding: 10px;
-  border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.507);
-}
-.img {
-  border-radius: 15px;
-}
-.play-btn-background {
-  position: absolute;
-  min-height: 100%;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.3s;
-  opacity: 0;
-}
-.play-btn-background:hover {
-  opacity: 1;
-}
-.play-btn-effect {
-  display: flex;
-  align-items: center;
-  border-radius: 20px;
-  padding: 5px;
-  background: rgba(240, 232, 232, 0.418);
-  cursor: pointer;
-}
-.play-btn-effect span {
-  padding: 0 5px;
-}
-ul {
-  display: flex;
-  justify-content: flex-start;
-  width: 100%;
-  /* border:2px solid red; */
-}
-li {
-  font-size: 14px;
-  font-weight: 100;
-  margin: 3px;
-  font-size: 10px;
-  margin-left: 0px;
-}
-li:first-child {
-  list-style: none;
-  margin-left: 0px;
-}
-li:last-child {
-  margin-left: 20px;
-}
-.movie-cat {
-  display: flex;
-  align-items: center;
-}
-.movie-cat > img {
-  background-color: rgb(8, 8, 8);
-  margin: 0 7px;
-  border-radius: 2px;
-  width: 13px;
-  height: 13px;
-}
-@media screen and (max-width: 1000px) {
-  .movies-series {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-column-gap: 4%;
-    padding: 10px 20px;
-    color: white;
+.series{ 
+    position: relative;
+    /* margin-bottom: 15px; */
+    /* transition: .5s; */
   }
-  ul{
-    width:100%;
+ 
+  .img{
+    position: relative;
+    width: 100%;
+    height: 120px;
+    border-radius: 12px;
+    overflow: hidden;
+    /* z-index: 1000; */
   }
-  .movie-cat{
-    font-size:10px;
+  .img img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  } 
+  .series:hover .img img{
+    cursor: pointer;
+    opacity: .4;
   }
-}
-@media screen and (max-width: 768px) {
-  .movies-series{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 4%;
-    padding: none;
-    color: white;
+   .hover{
+    position: absolute;
+    left: 50%;
+    top: 36%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    padding: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    visibility: hidden;
+
   }
-}
+  .series:hover .hover{
+    visibility: visible;
+    cursor: pointer;
+  }
+  .hover img{
+    margin-right: 10px;
+  }
+  .booked{
+    position: absolute;
+    z-index: 1;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .msg{
+    position: relative;
+    text-align: left;
+    padding-top: 10px;
+  }
+  .msg p:nth-child(2){
+    color:#fff;
+    font-size: 16px;
+    margin-top: 2px;
+    opacity: 1;
+  }
+  p{ 
+    display: flex;
+    align-items: center;
+    color:#fff;
+    font-size: 10px;
+    opacity: .75;
+    font-weight: lighter;
+    margin: 0;
+  }
+  p span{
+    position: relative;
+    margin-right: 15px;
+  }
+  .span{
+    display: flex;
+    align-items: center;
+  }
+  .span img{
+    margin-right: 10px;
+  }
+  p span:not(.last):before{
+    position: absolute;
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #fff;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  @media screen and (min-width: 768px) {
+    .seriesview{
+      grid-template-columns: repeat(3,1fr);
+    }
+    .img{ 
+      height: 180px; 
+    }
+    .booked{ 
+      top: 20px;
+      right: 20px;
+    }
+    p:nth-child(1){
+      font-size: 12px;
+    }
+    .msg p:nth-child(2){
+      font-size: 20px;
+    }
+  }
+  @media screen and (min-width: 1000px) {
+      .cont{
+        padding: 20px 10px 20px 0;
+      }
+    .seriesview{
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
 </style>

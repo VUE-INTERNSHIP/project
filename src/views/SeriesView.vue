@@ -1,10 +1,10 @@
 <template>
   <div class="cont">
     <div class="input">
-    <label>
-      <input v-model="search" type="search" placeholder="Search for TV series here" />
-    </label>
-</div>
+      <label>
+        <input v-model="search" type="search" placeholder="Search for TV series here" />
+      </label>
+    </div>
     <div class="seriesview">
     <div class="series" v-for="movie in searchInput" :key="movie.title">
       <div class="hover">
@@ -25,32 +25,28 @@
 </div>
   </div>
 </template>
-
+ 
 <script>
 //  import Movies from '../datas/movies.js';
 export default {
-  // components: {
-  //   Movies
-  // },
-  props: {
-    movies: Array
-  },
-  data(){
-    return{
-      series: this.movies,
-      search: '',
-    }
-  },
-  
+  data() {
+      return{
+        movies: [],
+        search: ''
+      }
+    }, 
     mounted() {
-      this.series = this.series.filter(src => src.category === 'TV Series' )
-      console.log(this.series);   
+      this.movies = this.$store.getters.getState
+      console.log(this.movies);
+
+      this.movies = this.movies.filter(src => src.category === 'TV Series' )
+      console.log(this.movies);   
    
     },
     computed: {
       searchInput() {
-        let series = [...this.series]
-        return series = series.filter(src => src.title.toLowerCase().includes(this.search.toLowerCase()))
+        let series = [...this.movies]
+        return series.filter(src => src.title.toLowerCase().includes(this.search.toLowerCase()))
         // this.mvs = this.mvs.filter(srch => srch.title.includes('Un'))
         // return this.series
       }
@@ -99,7 +95,7 @@ label{
   display: grid;
   gap: 10px;
   grid-template-columns: repeat(2, 1fr );
-  color:#fff;
+  color:#fff; 
 }
 .series{ 
     position: relative;
