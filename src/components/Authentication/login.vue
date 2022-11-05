@@ -56,7 +56,7 @@ export default {
 .container{
     width: 100%;
     height: 100vh;
-    background-image: url(@/assets/grid.svg); 
+    /* background-image: url(@/assets/grid.svg);  */
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
@@ -84,13 +84,13 @@ form{
     width: 300px;
     padding: 15px 10px;
     margin: 10px 10%;
-    border-radius:3px;
+    border-radius:7px;
     background-color:rgb(205, 205, 206);
     border: none;
 }
 .user:focus, .pass:focus{
     outline: none;
-    border-bottom: 4px solid rgb(8, 30, 41);
+    border-bottom: 3px solid rgb(3, 61, 90);
     border-radius: 0;
     transition: all .1s;
 }
@@ -132,7 +132,7 @@ button{
     color: #fff;
     transition: all .4s;
 }
-@media screen and (max-width:768px) {
+@media screen and (max-width:1000px) {
   .login{
     width:350px;
   }
@@ -145,27 +145,28 @@ button{
     border: none;
 }
 }
-@media screen and (max-width:480px) {
+@media screen and (max-width:768px) {
   .login{
     width:300px;
-    height:50vh;
+    height:400px;
   }
   .user, .pass{
     width: 200px;
     padding:5px;
-    margin: 10px 5%;
+    margin: 10px 15%;
    
 }
 button{
     width: 70px;
     padding:7px;
     font-size: 14px;
-    margin:30px 3% ;
+    margin:30px 15% ;
 }
 .login-image > img{
     width: 400px;
     height: 50vh;
 }
+
 .Signup{
     display: inline-block;
     width: 70px;

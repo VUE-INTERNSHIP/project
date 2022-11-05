@@ -174,7 +174,7 @@ li:last-child {
   width: 13px;
   height: 13px;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .movies-series {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -189,7 +189,7 @@ li:last-child {
     font-size:10px;
   }
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
   .movies-series{
     display: grid;
     grid-template-columns: 1fr 1fr;

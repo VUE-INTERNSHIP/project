@@ -48,7 +48,7 @@ export default {
 .signup{
     width: 100%;
     height: 100vh;
-    background-image: url(@/assets/grid.svg); 
+    /* background-image: url(@/assets/grid.svg);  */
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
@@ -121,10 +121,10 @@ button{
 p{
     margin:0 5%;
 }
-@media screen and (max-width:768px) {
-    .main{
-    height:80vh;
-    width:70%;
+@media screen and (max-width:1000px) {
+.main{
+    min-height:600px;
+    width:80%;
     background:#fff;
     display:flex;
     justify-content: flex-start;
@@ -169,7 +169,7 @@ form{
 }
 .Fname:focus, .Lname:focus, .uname:focus,input[type="password"]:focus, input[type="email"]:focus{
     outline: none;
-    border-bottom:5px solid royalblue;
+    border-bottom:3px solid royalblue;
     transition: all .1s;
 }
 button{
