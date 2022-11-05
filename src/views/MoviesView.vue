@@ -136,7 +136,7 @@ li:last-child {
   width: 15px;
   height: 15px;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .moviesview {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -145,7 +145,7 @@ li:last-child {
     color: white;
   }
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
   .moviesview {
     display: grid;
     grid-template-columns: 1fr 1fr;
