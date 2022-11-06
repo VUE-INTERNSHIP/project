@@ -1,4 +1,4 @@
-import { faAnglesLeft } from '@fortawesome/free-solid-svg-icons';
+// import { faAnglesLeft } from '@fortawesome/free-solid-svg-icons';
 import Vue, { useAttrs } from 'vue';
 import Vuex from 'vuex';
 import data from "../datas/movies.json";
@@ -7,8 +7,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    movie: [],
-    // movie: [...data]
+    // movie: [],
+    movie: [...data]
   },
   getters: {
     getState(state) {
@@ -26,9 +26,9 @@ export default new Vuex.Store({
         }
        
 			},
-      // nameScs(state){
-      //     state.movie = data
-      // },
+       nameScs(state){
+          state.movie = data
+       },
       TOGGLE_INDX(state, payload){
         const indx = state.movie.find(idx => idx.title == payload)
         indx.isBookmarked = !indx.isBookmarked
