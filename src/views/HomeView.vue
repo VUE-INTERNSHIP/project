@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="conts">
     <div class="input">
       <label>
         <input v-model="search" type="search" placeholder="Search for Movie TV Series here" />
@@ -49,12 +49,15 @@ export default {
 </script>
  
 <style scoped> 
-.container{
+.conts{
   position:relative;
+  width: 100%;
+  margin: 0;
   padding: 0;
 }
 .main{
   background-color: #10141E;
+  width: 100%;
 }
 .input{
     position: relative;

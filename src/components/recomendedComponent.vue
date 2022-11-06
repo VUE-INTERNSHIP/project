@@ -149,6 +149,7 @@ label{
     border: none;
     outline: none;
     background: transparent;
+    padding: 1px 4px;
   }
   .msg{
     position: relative;
@@ -217,7 +218,7 @@ label{
         padding-right: 10px;
     }
     .seriesview{
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: 1fr 1fr 1fr 1fr;
     }
   }
 </style>

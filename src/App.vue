@@ -7,17 +7,7 @@
       <router-view/>
     </div>
   </div>
-  <!-- <div>
-    <div v-for="done in dones" :key="done.id" >
-      <p @click="chnId(done.id)">{{done.name}} {{done.done}}</p>
-    </div>
-    <div>
-      <h4>Dned..</h4>
-      <div v-for="(dn, x) in donn" :key="x">
-        <h2>{{dn.name}}</h2>
-       </div>
-    </div>
-  </div> -->
+
 </template>
  
 <script>
@@ -46,15 +36,11 @@
 </script>
 
 <style>
-/* p{
-  cursor: pointer;
-  background: #FC4747;
-  padding: 12px;
-} */
+
 *{
   margin: 0;
   padding: 0;
-  /* box-sizing: border-box; */
+  box-sizing: border-box;
 }
 
 #app {
@@ -70,6 +56,7 @@
   --grayishBlue: #5A698F;
   --semiDarkBlue: #161D2F;
   --white: #FFFFFF;
+  padding: 0;
 }
 /* Main App Styling by DeadEazy */
 
