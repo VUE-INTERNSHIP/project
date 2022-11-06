@@ -58,7 +58,7 @@ export default {
 .cont{
   position: relative;
   margin: 0;
-  padding: 20px;
+  padding: 20px 10px;
   width: 100%;
   /* padding-top: 10px; */
 }
@@ -197,6 +197,9 @@ label{
   }
 
   @media screen and (min-width: 768px) {
+    .cont{
+      /* padding: 20px; */
+    }
     .seriesview{
       grid-template-columns: repeat(3,1fr);
     }

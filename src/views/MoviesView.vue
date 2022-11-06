@@ -72,7 +72,7 @@ export default {
 }
 .mss{
   position: relative;
-  padding: 10px 20px;
+  padding: 20px 10px;
 }
 .input{
     position: relative;
@@ -101,7 +101,7 @@ label{
 .moviesview {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-column-gap: 4%;
+  gap: 10px;
   color: white;
 }
 .container {

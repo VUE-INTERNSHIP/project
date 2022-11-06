@@ -54,6 +54,9 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 .main{
     height:80vh;
