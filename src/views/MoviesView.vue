@@ -1,6 +1,12 @@
 <template>
+  <div class="mss">
+    <div class="input">
+      <label>
+        <input v-model="search" type="search" placeholder="Search for TV series here" />
+      </label>
+    </div>
   <div class="moviesview">
-    <div class="container" v-for="movie in filteredMovies" :key="movie.title">
+    <div class="container" v-for="movie in searchInput" :key="movie.title">
       <div class="img-container"> 
         <!-- main image -->
         <img :src="movie.thumbnail.regular.medium" class="img" />
@@ -28,24 +34,34 @@
       <p>{{ movie.title }}</p>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
-import Movies from "@/datas/movies.js";
 
 export default {
   data() {
-    return {
-      movies: Movies,
-    };
-  },
-  computed: {
-    filteredMovies: function () {
-      return this.movies.filter((movie) => {
-        return movie.category === "Movie";
-      });
+      return{
+        movies: [],
+        search: ''
+      }
+    }, 
+    mounted() {
+      this.movies = this.$store.getters.getState
+      console.log(this.movies);
+
+      this.movies = this.movies.filter(src => src.category === 'Movie' )
+      console.log(this.movies);   
+   
     },
-  },
+    computed: {
+      searchInput() {
+        let series = [...this.movies]
+        return series.filter(src => src.title.toLowerCase().includes(this.search.toLowerCase()))
+        // this.mvs = this.mvs.filter(srch => srch.title.includes('Un'))
+        // return this.series
+      }
+    }
 };
 </script>
 
@@ -54,11 +70,38 @@ export default {
   margin: 0;
   padding: 0;
 }
+.mss{
+  position: relative;
+  padding: 10px 20px;
+}
+.input{
+    position: relative;
+    width: 100%;
+    margin: 0;
+    /* padding: 0 12px; */
+  } 
+label{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+  .input input{ 
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    padding: 15px 4em;
+    background-image: url('../assets/icon-search.svg');
+    background-position-y: center;
+    background-repeat: no-repeat;
+    /* display: flex;
+    align-items: center; */
+  }
 .moviesview {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 4%;
-  padding: 10px 20px;
   color: white;
 }
 .container {
@@ -141,7 +184,7 @@ li:last-child {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: 4%;
-    padding: 10px 20px;
+    /* padding: 10px 20px; */
     color: white;
   }
 }

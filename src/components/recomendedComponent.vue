@@ -2,12 +2,12 @@
   <div class="cont">
     <h2>recomended</h2>
     <div class="seriesview">
-    <div class="series" v-for="(movie, index) in dones" :key="movie.title">
+    <div class="series" v-for="(movie) in movies" :key="movie.title">
       <div class="hover">
           <img src="../assets/icon-play.svg" alt=""> <span>play</span>
         </div> 
       <div class="booked">
-          <button @click="isBookmarked(index)">
+          <button @click="isBookmarked(movie.title)">
             <span v-if="movie.isBookmarked" class="book"><img src="../assets/bookMarkFull.svg" :alt="movie.title" /></span>
             <span v-if="!movie.isBookmarked" class="book"><img src="../assets/icon-bookmark-empty.svg" :alt="movie.title"/></span>
           </button>
@@ -26,23 +26,13 @@
 
 <script>
 export default {
-  data() {
-      return{
-        dones: []
-      }
-    }, 
-    mounted() {
-      this.dones = this.$store.getters.getState
-      console.log(this.dones);
+    props: {
+      movies: Array
     },
-    computed: {
-      donn() {
-      return this.$store.getters.getStates
-      }
-    },
+
     methods: {
       isBookmarked(index){
-        this.$store.dispatch('CNH_INDX',index)
+        this.$store.dispatch('toggleBookmarked',index)
         console.log(index)
       },
     }

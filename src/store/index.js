@@ -7,14 +7,15 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    todos: []
+    movie: [],
+    // movie: [...data]
   },
   getters: {
     getState(state) {
-      return state.todos
+      return state.movie
     },
     getStates(state) {
-      return state.todos.filter(x => x.done)
+      return state.movie.filter(x => x.isBookmarked)
     }
   }, 
   mutations: {
@@ -25,17 +26,18 @@ export default new Vuex.Store({
         }
        
 			},
-      nameScs(state){
-          state.todos = data
-      },
-      cnhIndx(state, payload){
-        const indx = state.hel.find(idx => idx.id == payload)
-        indx.done = !indx.done
+      // nameScs(state){
+      //     state.movie = data
+      // },
+      TOGGLE_INDX(state, payload){
+        const indx = state.movie.find(idx => idx.title == payload)
+        indx.isBookmarked = !indx.isBookmarked
+        console.log(indx)
       }
   },
   actions: {
-    CNH_INDX(context, payload){
-      context.commit('cnhIndx',payload)
+    toggleBookmarked(context, payload){
+      context.commit('TOGGLE_INDX',payload)
     }
   }, 
   modules: {
