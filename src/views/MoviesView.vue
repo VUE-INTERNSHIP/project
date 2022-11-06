@@ -1,7 +1,7 @@
 <template>
   <div class="moviesview">
     <div class="container" v-for="movie in filteredMovies" :key="movie.title">
-      <div class="img-container">
+      <div class="img-container"> 
         <!-- main image -->
         <img :src="movie.thumbnail.regular.medium" class="img" />
 
