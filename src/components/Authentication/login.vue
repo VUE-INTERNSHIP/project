@@ -16,10 +16,13 @@
             class="pass"
           />
           <div class="button-group">
-            <button type="submit" @click="handleSubmit"> <router-link :to="{name:'home'}" class="go">Login</router-link></button>
+            <button type="submit" @click="handleSubmit">Login</button>
             <router-link :to="{name:'signup'}" class="Signup">Sign Up</router-link> 
           </div>
         </form>
+        <div class="error" v-if="error">
+           Invalid username or password
+        </div>
       </section>
     </div>
 </template>
@@ -30,17 +33,20 @@ export default {
   data(){
     return{
       userName:'',
-      passWord:''
+      passWord:'',
+      error: false
     }
   },
   methods:{
     handleSubmit(e){
-      if(!this.userName || !this.passWord){
+      if(this.userName=="Admin" && this.passWord=="pass"){
         e.preventDefault()
-        console.log('error')
+        this.$router.push({name:'homeview'})
       }else{
       e.preventDefault()
-      console.log(this.userName)
+      this.error= true
+      console.log('error')
+      
       }
     }
   }
@@ -134,6 +140,11 @@ button{
     background-color: #000;
     color: #fff;
     transition: all .4s;
+}
+.error{
+  color:red;
+  width:70%;
+  font-size:20px;
 }
 @media screen and (max-width:1000px) {
   .login{
