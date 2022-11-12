@@ -6,6 +6,7 @@ import Bookmarked from '../views/Bookmarked.vue'
 import MoviesView from '../views/MoviesView.vue'
 import SeriesView from '../views/SeriesView.vue'
 import signup from '../components/Authentication/signup.vue'
+import store from '@/store';
 
 Vue.use(VueRouter);
 
@@ -24,6 +25,7 @@ const routes = [
     path: '/home',
     name: 'home',
     component: () => import(/* webpackChunkName: "about" */ '../views/HomeView.vue'),
+
   },
   {
     name: 'signup',
@@ -42,8 +44,8 @@ const routes = [
   },
   {
     name: 'homeview',
-    path: '/seriesview',
-    component: HomeView
+    path: '/home',
+    component: HomeView,
   },
   {
     name: 'Bookmarked',

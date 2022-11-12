@@ -8,7 +8,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     // movie: [],
-    movie: [...data]
+    movie: [...data],
   },
   getters: {
     getState(state) {
